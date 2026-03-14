@@ -1,0 +1,289 @@
+# Autonomous RuneScape Task-Based Management Experiment
+
+## Project Vision
+
+Transform the 2009Scape open-source RuneScape server into a management-style automation game where characters execute player-defined tasks instead of requiring constant manual clicks.
+
+The system should allow players to assign goals such as gathering resources, training skills, or completing objectives while the character autonomously performs the required actions.
+
+This project will be used privately by the team as an experimental sandbox for exploring automation, AI agents, and management-style gameplay layered on top of a RuneScape-like world simulation.
+
+---
+
+# Core Concept
+
+Instead of:
+
+"Click tree -> wait -> click tree -> wait"
+
+The player issues **tasks**.
+
+Examples:
+
+* Cut 500 logs
+* Reach Woodcutting level 30
+* Mine 200 iron ore
+* Train fishing until level 40
+* Craft 1000 runes
+
+The game engine manages the character's behaviour until the objective is complete.
+
+---
+
+# Design Pillars
+
+## 1 Automation-First Gameplay
+
+The game should play itself once tasks are assigned.
+
+## 2 Strategic Planning
+
+Players manage long-term goals rather than performing repetitive actions.
+
+## 3 System Transparency
+
+Players should clearly see why their character makes decisions.
+
+## 4 Expandable Automation
+
+Tasks should be expandable into more complex automation chains later.
+
+Example future chain:
+
+Mine ore -> Smelt bars -> Smith weapons -> Sell weapons
+
+---
+
+# Core Systems Overview
+
+## Task System
+
+Defines player goals and monitors completion conditions.
+
+## Behaviour Engine
+
+Chooses the actions required to complete the current task.
+
+## World Interaction Layer
+
+Handles movement, interactions, and animations.
+
+## Resource Tracking
+
+Tracks inventory, bank contents, and progress.
+
+## Planning Logic
+
+Determines the optimal way to complete a task.
+
+---
+
+# Phase 1: Codebase Research
+
+Goal: Fully understand the 2009Scape architecture.
+
+Areas to investigate:
+
+* Server architecture
+* Player update loop
+* Skill systems
+* Interaction handlers
+* Pathfinding
+* NPC behaviour
+* Object interactions
+
+Key files to identify:
+
+* Player class
+* Skill handlers
+* Object interaction handlers
+* World tick system
+
+Questions to answer:
+
+* Where are actions triggered?
+* How are skill actions scheduled?
+* How often does the game tick?
+
+Deliverable:
+
+Architecture documentation.
+
+---
+
+# Phase 2: Task System
+
+Goal: Build a system to represent player goals.
+
+## Task Types
+
+Resource Tasks
+
+* Gather X resource
+
+Skill Tasks
+
+* Reach X level
+
+Experience Tasks
+
+* Gain X XP
+
+Crafting Tasks
+
+* Produce X item
+
+Combat Tasks
+
+* Kill X enemy
+
+## Task Structure
+
+Fields:
+
+* task_id
+* task_type
+* target_skill
+* target_item
+* target_amount
+* progress
+* state
+
+States:
+
+* queued
+* active
+* paused
+* completed
+
+Deliverable:
+
+Working task system stored on player object.
+
+---
+
+# Phase 3: Behaviour Engine
+
+Goal: Determine what the character should do each tick.
+
+The behaviour engine interprets the active task and decides the next action.
+
+Example logic:
+
+If task = gather logs
+
+1 locate nearest tree
+2 walk to tree
+3 chop tree
+4 repeat until goal reached
+
+Deliverable:
+
+First autonomous resource gathering behaviour.
+
+---
+
+# Phase 4: Autonomous Actions
+
+Goal: Replace manual clicking with automated action execution.
+
+Actions include:
+
+* Movement
+* Object interaction
+* NPC interaction
+* Skill usage
+
+The behaviour engine triggers these actions.
+
+---
+
+# Phase 5: Task Interface
+
+Goal: Create a player interface for issuing tasks.
+
+Possible interfaces:
+
+Option A
+Chat commands
+
+Example:
+
+/task woodcut 500
+
+Option B
+Task panel UI
+
+Option C
+External control panel
+
+---
+
+# Phase 6: Persistence
+
+Tasks should persist across sessions.
+
+Data to save:
+
+* task queue
+* progress
+* timestamps
+
+---
+
+# Phase 7: Multi-Task Automation
+
+Future system allowing task chains.
+
+Example:
+
+1 mine iron
+2 smelt bars
+3 smith weapons
+
+---
+
+# Phase 8: Experimentation Layer
+
+This project can be used to test automation concepts.
+
+Potential experiments:
+
+AI decision making
+
+Economic simulation
+
+Multi-agent collaboration
+
+Resource optimization
+
+---
+
+# Metrics for Success
+
+* Character can complete tasks without player clicks
+* Tasks survive logout/login
+* Task system handles multiple skill types
+
+---
+
+# Potential Risks
+
+Codebase complexity
+
+Pathfinding edge cases
+
+Server tick limitations
+
+Unexpected interactions with existing systems
+
+---
+
+# Development Philosophy
+
+Keep the core RuneScape mechanics intact while layering automation on top.
+
+This preserves the underlying gameplay simulation while enabling experimentation with automation and management gameplay.
+
+---
+
