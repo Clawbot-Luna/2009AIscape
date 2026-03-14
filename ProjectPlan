@@ -4,6 +4,8 @@
 
 Transform the 2009Scape open-source RuneScape server into a management-style automation game where characters execute player-defined tasks instead of requiring constant manual clicks.
 
+https://gitlab.com/2009scape/2009scape
+
 The system should allow players to assign goals such as gathering resources, training skills, or completing objectives while the character autonomously performs the required actions.
 
 This project will be used privately by the team as an experimental sandbox for exploring automation, AI agents, and management-style gameplay layered on top of a RuneScape-like world simulation.
